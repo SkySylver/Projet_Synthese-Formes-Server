@@ -1,3 +1,5 @@
+package serveur.expert;
+
 import java.awt.*;
 
 public abstract class ExpertCOR implements Expert {
