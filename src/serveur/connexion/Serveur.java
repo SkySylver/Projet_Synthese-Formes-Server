@@ -14,9 +14,9 @@ public class Serveur {
             
             
             InetAddress IP = InetAddress.getLocalHost();
-            int localPort = serveur.getLocalPort();
+            int port = serveur.getLocalPort();
             
-            System.out.println("Adresse IP du serveur: "+IP.getHostAddress()+":"+localPort);
+            System.out.println("Adresse IP du serveur: "+IP.getHostAddress()+":"+port);
             
             
             while(true){
