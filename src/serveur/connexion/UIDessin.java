@@ -11,7 +11,7 @@ public class UIDessin extends Frame{
 	/**
 	 * 
 	 * @param client
-	 * @param x
+	 * @param x : 
 	 * @param y
 	 * @param l
 	 * @param h
@@ -20,6 +20,7 @@ public class UIDessin extends Frame{
 	public UIDessin(String client, int x, int y, int largeur, int hauteur) {
 		super(client);
 
+		//Adaptation à l'écran
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Dimension dim = tk.getScreenSize();
 		int le = (int) dim.getWidth();
@@ -46,6 +47,8 @@ public class UIDessin extends Frame{
 		} catch (InterruptedException e) {
 			System.out.println("Erreur Sleep :"+e);
 		}
+		
+		//graphics correspond à l'objet sur lequel les formes seront dessinnées
 		this.graphics = this.getBufferStrategy().getDrawGraphics();
 	
 	}

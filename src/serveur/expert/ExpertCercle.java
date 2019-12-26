@@ -9,7 +9,8 @@ public class ExpertCercle extends ExpertCOR {
     
     protected boolean dessinerForme(String requete, Graphics2D graphics2D) {
     	if (requete.startsWith("Cercle")) {
-    		String arguments[] = requete.substring(nom.length()).split(",");
+    		String nom = null;
+			String arguments[] = requete.substring(nom.length()).split(",");
         	if(arguments.length == 6) {
 	            int x1 = (int) Double.parseDouble(arguments[1].trim());
 	            int y1 = (int) Double.parseDouble(arguments[2].trim());
