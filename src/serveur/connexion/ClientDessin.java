@@ -12,9 +12,6 @@ public class ClientDessin extends Thread{
 	BufferedReader fluxEntrant;
 	
 	
-	
-	
-	
 	public ClientDessin(Socket s) throws IOException {
 		this.socket = s;
 		this.fluxEntrant = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
@@ -22,13 +19,16 @@ public class ClientDessin extends Thread{
 	
 	
 	public void run() {
-		String flux;
 		try {
-			flux = this.fluxEntrant.readLine();
-			String args[] = flux.split("-");
 			
-			
-			
+			String args[] = fluxEntrant.readLine().split(",");
+			UIDessin clientD = new UIDessin(args[0],Integer.parseInt(args[1]),Integer.parseInt(args[2]),Integer.parseInt(args[3]),Integer.parseInt(args[4]));
+			while(true) {
+				args = fluxEntrant.readLine().split(","); // redondance
+				
+				//Traitement du flux avec chaine formes2
+				
+			}
 			
 		} catch (IOException e) {
 
