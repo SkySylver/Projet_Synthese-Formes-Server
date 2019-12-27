@@ -3,22 +3,24 @@ package serveur.connexion;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Toolkit;
 
 public class UIDessin extends Frame{
-	public Graphics graphics;
+	public Graphics2D graphics;
 	
 	/**
 	 * 
-	 * @param client
-	 * @param x : 
-	 * @param y
-	 * @param l
-	 * @param h
+	 * @param args[0] : Nom du client
+	 * @param args[1] : Coordonnee en abscisse de l'ecran ou va demarrer la fenetre
+	 * @param args[2] : Coordonnee en ordonnee de l'ecran ou va demarrer la fenetre
+	 * @param args[3] : Longeur de la fenetre
+	 * @param args[4] : Hauteur de la fenetre
 	 * @throws InterruptedException 
 	 */
-	public UIDessin(String client, int x, int y, int largeur, int hauteur) {
-		super(client);
+	public UIDessin(String args[]) {
+
+		super(args[0]);
 
 		//Adaptation à l'écran
 		Toolkit tk = Toolkit.getDefaultToolkit();
@@ -26,11 +28,11 @@ public class UIDessin extends Frame{
 		int le = (int) dim.getWidth();
 		int he = (int) dim.getHeight();
 		
-		int bordGauche, bordSuperieur, l, h;
-		bordGauche = Math.max(0, x);
-		bordSuperieur = Math.max(0, y);
-		l = Math.min(largeur, le - bordGauche);
-		h = Math.min(hauteur, he - bordSuperieur);
+		int bordGauche,bordSuperieur, h, l;
+		bordGauche = Math.max(0, Integer.parseInt(args[1]));
+		bordSuperieur = Math.max(0, Integer.parseInt(args[2]));
+		l = Math.min(Integer.parseInt(args[3]), le - bordGauche);
+		h = Math.min(Integer.parseInt(args[4]), he - bordSuperieur);
 		
 		this.setBounds(bordGauche, bordSuperieur, l, h);
 
@@ -49,9 +51,8 @@ public class UIDessin extends Frame{
 		}
 		
 		//graphics correspond à l'objet sur lequel les formes seront dessinnées
-		this.graphics = this.getBufferStrategy().getDrawGraphics();
+		this.graphics = (Graphics2D) this.getBufferStrategy().getDrawGraphics();
 	
-	}
-	
+	}	
 	
 }

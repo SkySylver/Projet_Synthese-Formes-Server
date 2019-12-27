@@ -6,35 +6,43 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
-public class ClientDessin extends Thread{
+import serveur.forme.ExpertPolygone;
+import serveur.forme.ExpertTriangle;
 
+/**
+ * Client/Thread cree lors d'une nouvelle connexion
+ *
+ */
+public class ClientDessin extends Thread {
+
+	
 	Socket socket;
 	BufferedReader fluxEntrant;
+	ExpertPolygone formes;
 	
-	
-	public ClientDessin(Socket s) throws IOException {
+
+	public ClientDessin(Socket s, ExpertPolygone expert) throws IOException {
+		this.formes = expert;
 		this.socket = s;
 		this.fluxEntrant = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
 	}
-	
-	
+
 	public void run() {
 		try {
-			
-			String args[] = fluxEntrant.readLine().split(",");
-			UIDessin clientD = new UIDessin(args[0],Integer.parseInt(args[1]),Integer.parseInt(args[2]),Integer.parseInt(args[3]),Integer.parseInt(args[4]));
-			while(true) {
-				args = fluxEntrant.readLine().split(","); // redondance
-				
-				//Traitement du flux avec chaine formes2
-				
+			// Creation d'une nouvelle fenetre
+			UIDessin client = new UIDessin(fluxEntrant.readLine().split(","));
+
+			while (true) {
+
+				formes.dessiner(fluxEntrant.readLine(), client.graphics);
+				// Traitement du flux avec chaine formes2
 			}
-			
+
 		} catch (IOException e) {
 
-			System.out.println("Erreur : "+e);
+			System.out.println("Erreur : " + e);
 		}
-		
-		
+
 	}
+
 }
