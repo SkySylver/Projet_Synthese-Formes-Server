@@ -10,10 +10,17 @@ import serveur.forme.ExpertPolygone;
 import serveur.forme.ExpertSegment;
 import serveur.forme.ExpertTriangle;
 
+/**
+ * Effectue la creation du serveur
+ * Initialisation des Expert (Formes), evitant une allocation a travers chaque session
+ * Cree un Client pour chaque nouvelle connexion
+ */
 public class Serveur {
-    public static void main(String[] args) throws IOException {
-        int nbClient = 0, portServeur = 6666;   // arbitraire. N'importe quel port libre convient
-        
+	public static void main(String[] args) throws IOException {
+	    Socket socket;
+	    ClientDessin client;
+        int nbClient = 0, portServeur = 6666;
+
         try {
             //Initialisation du serveur
         	ServerSocket serveur = new ServerSocket(portServeur);
@@ -30,10 +37,10 @@ public class Serveur {
             
             while(true){
                 System.out.println("Serveur en attente d'une connexion...\n");
-                Socket socket = serveur.accept();
+                socket = serveur.accept();
                 nbClient++;
 
-                ClientDessin client = new ClientDessin(socket, expert);
+                client = new ClientDessin(socket, expert);
                 client.start();
             }
         }

@@ -11,6 +11,10 @@ public class ExpertCercle extends ExpertCOR {
 	 * argi[0] : x1 argi[1] : x2 argi[2] : y1 argi[3] : y2
 	 */
 
+	/**
+	 * 
+	 * @param suivant : Expert suivant
+	 */
 	public ExpertCercle(ExpertCOR suivant) {
 		super(suivant);
 	}

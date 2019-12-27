@@ -9,12 +9,26 @@ public abstract class ExpertCOR implements Expert {
 	int argi[]; //Reste des arguments (Coordonnees, etc...)
 	
 	private ExpertCOR suivant;
+	
+	/**
+	 * Dessiner la forme correspondant a la requete, si existente
+	 * @param requete : Format different selon la forme
+	 * @param graphics2D : graphic sur lequel il faut dessiner
+	 * @return Vrai si la forme est dessinee
+	 */
     protected abstract boolean dessinerForme(String requete, Graphics2D graphics2D);
 
+    /**
+     * Constructeur sans successeur
+     */
     public ExpertCOR() {
 		suivant = null;
 	}
     
+    /**
+     * Constructeur avec expert suivant
+     * @param suivant : Expert suivant
+     */
     public ExpertCOR(ExpertCOR suivant) {
         this.suivant = suivant;
     }
@@ -22,7 +36,9 @@ public abstract class ExpertCOR implements Expert {
 
     
 
-   
+    /**
+     * @param requete
+     */
     public boolean dessiner(String requete, Graphics2D graphics2D) {
         if (!this.dessinerForme(requete, graphics2D)) {
         	if (this.suivant != null)

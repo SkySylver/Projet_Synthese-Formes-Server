@@ -9,7 +9,7 @@ public class UIDessin extends Frame{
 	public Graphics2D graphics;
 	
 	/**
-	 * 
+	 * Chaque argument doit etre separe d'un 
 	 * @param args[0] : Nom du client
 	 * @param args[1] : Coordonnee en abscisse de l'ecran ou va demarrer la fenetre
 	 * @param args[2] : Coordonnee en ordonnee de l'ecran ou va demarrer la fenetre
@@ -18,7 +18,6 @@ public class UIDessin extends Frame{
 	 * @throws InterruptedException 
 	 */
 	public UIDessin(String args[]) {
-
 		super(args[0]);
 
 		//Adaptation à l'écran
