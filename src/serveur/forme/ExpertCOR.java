@@ -6,7 +6,7 @@ public abstract class ExpertCOR implements Expert {
 
 	
 	String args[]; //Liste des arguments string(Forme, couleur, voir plus)
-	int argi[]; //Reste des arguments (Coordonnees, etc...)
+	int argi[] = new int[10]; //Reste des arguments (Coordonnees, etc...)
 	
 	private ExpertCOR suivant;
 	
@@ -48,6 +48,12 @@ public abstract class ExpertCOR implements Expert {
         return true;        
     }
     
+    /**
+     * 
+     * @param str string;string;string,int,int...
+     * les param sont séparées par des virgules, le premier param est un string
+     * contenant plusieurs string séparées par des points virgules
+     */
 	public void convertArgs(String str) {
 
 		String tempargs[] = str.split(",");
@@ -55,8 +61,7 @@ public abstract class ExpertCOR implements Expert {
 		if(tempargs.length==0) throw new IllegalArgumentException("La liste des arguments est vide");
 
 		args = tempargs[0].split(";");
-			
-		for (int i = 1; i <= tempargs.length; i++) {
+		for (int i = 1; i < tempargs.length; i++) {
 			argi[i-1] = Integer.parseInt(tempargs[i]);
 		}
 	}
