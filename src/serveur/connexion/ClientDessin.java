@@ -28,6 +28,7 @@ public class ClientDessin extends Thread {
 		this.formes = expert;
 		this.socket = s;
 		this.fluxEntrant = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+		System.out.println("Client demarré");
 	}
 
 	/**
@@ -41,7 +42,7 @@ public class ClientDessin extends Thread {
 	public void run() {
 		try {
 			// Creation d'une nouvelle fenetre
-			UIDessin client = new UIDessin(fluxEntrant.readLine().split(";"));
+			UIDessin client = new UIDessin(fluxEntrant.readLine().split(","));
 
 			while (true) {
 
