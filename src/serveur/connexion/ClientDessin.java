@@ -29,6 +29,7 @@ public class ClientDessin extends Thread {
 		this.formes = expert;
 		this.socket = s;
 		this.fluxEntrant = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+		System.out.println("Client demarré");
 	}
 
 	/**
