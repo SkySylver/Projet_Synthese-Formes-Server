@@ -16,8 +16,9 @@ public class ExpertSegment extends ExpertCOR {
         if(requete.startsWith("Segment")) {
 
         	convertArgs(requete);
-        	
+
 	        if (args.length == 2 && argi.length == 4) {
+
 	            try {
 	                Field champ = Color.class.getField(args[1]);
 	                Color color = (Color) champ.get(null);

@@ -51,12 +51,11 @@ public abstract class ExpertCOR implements Expert {
 	public void convertArgs(String str) {
 
 		String tempargs[] = str.split(",");
-
 		if(tempargs.length==0) throw new IllegalArgumentException("La liste des arguments est vide");
 
 		args = tempargs[0].split(";");
-			
-		for (int i = 1; i <= tempargs.length; i++) {
+		argi = new int[tempargs.length - 1];
+		for (int i = 1; i < tempargs.length ; i++) {
 			argi[i-1] = Integer.parseInt(tempargs[i]);
 		}
 	}

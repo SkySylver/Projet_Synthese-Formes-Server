@@ -19,7 +19,6 @@ public class UIDessin extends Frame{
 	 */
 	public UIDessin(String args[]) {
 		super(args[0]);
-
 		//Adaptation à l'écran
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Dimension dim = tk.getScreenSize();

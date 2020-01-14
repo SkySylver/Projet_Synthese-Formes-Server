@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
+import serveur.forme.ExpertCOR;
 import serveur.forme.ExpertPolygone;
 
 /**
@@ -15,7 +16,7 @@ public class ClientDessin extends Thread {
 	
 	Socket socket;
 	BufferedReader fluxEntrant;
-	ExpertPolygone formes;
+	ExpertCOR formes;
 	
 
 	/**
@@ -24,7 +25,7 @@ public class ClientDessin extends Thread {
 	 * @param expert : Chaine de responsabilite de Formes 
 	 * @throws IOException
 	 */
-	public ClientDessin(Socket s, ExpertPolygone expert) throws IOException {
+	public ClientDessin(Socket s, ExpertCOR expert) throws IOException {
 		this.formes = expert;
 		this.socket = s;
 		this.fluxEntrant = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
@@ -44,7 +45,6 @@ public class ClientDessin extends Thread {
 			UIDessin client = new UIDessin(fluxEntrant.readLine().split(","));
 
 			while (true) {
-
 				formes.dessiner(fluxEntrant.readLine(), client.graphics);
 				// Traitement du flux avec chaine formes2
 			}

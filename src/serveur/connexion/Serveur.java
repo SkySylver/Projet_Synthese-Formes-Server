@@ -5,6 +5,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import serveur.forme.ExpertCOR;
 import serveur.forme.ExpertCercle;
 import serveur.forme.ExpertPolygone;
 import serveur.forme.ExpertSegment;
@@ -29,10 +30,10 @@ public class Serveur {
             System.out.println("Adresse IP du serveur: "+IP.getHostAddress()+":"+port);
             
             //Initialisation de l'expert formes + Evite creations multiples de formes pour chaque client
-            ExpertCercle cercle = new ExpertCercle(null);
-            ExpertSegment segment = new ExpertSegment(cercle);
-            ExpertTriangle triangle = new ExpertTriangle(segment);
-            ExpertPolygone expert = new ExpertPolygone(triangle);
+            ExpertCOR experts = new ExpertCercle(null);
+            experts = new ExpertSegment(experts);
+            experts= new ExpertTriangle(experts);
+            experts = new ExpertPolygone(experts);
             
             
             while(true){
@@ -40,7 +41,7 @@ public class Serveur {
                 socket = serveur.accept();
                 nbClient++;
 
-                client = new ClientDessin(socket, expert);
+                client = new ClientDessin(socket, experts);
                 client.start();
             }
         }
