@@ -17,7 +17,6 @@ public class ExpertTriangle extends ExpertCOR {
 		if (requete.startsWith("Triangle")) {
 			convertArgs(requete);
 			if (args.length == 2 && argi.length == 6) {
-				System.out.println("Anayin");
 				try {
 					// Graphics2D ne permet pas de dessiner des triangles, on dessine un polygone à
 					// la place
