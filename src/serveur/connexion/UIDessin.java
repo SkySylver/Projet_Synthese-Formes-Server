@@ -7,7 +7,7 @@ import java.awt.Toolkit;
 
 public class UIDessin extends Frame{
 	public Graphics2D graphics;
-	
+	double centrex, centrey;
 	/**
 	 * Chaque argument doit etre separe d'un 
 	 * @param args[0] : Nom du client
@@ -18,8 +18,10 @@ public class UIDessin extends Frame{
 	 * @throws InterruptedException 
 	 */
 	public UIDessin(String args[]) {
+
 		super(args[0]);
 		//Adaptation à l'écran
+
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Dimension dim = tk.getScreenSize();
 		int le = (int) dim.getWidth();
@@ -28,11 +30,17 @@ public class UIDessin extends Frame{
 		int bordGauche,bordSuperieur, h, l;
 		bordGauche = Math.max(0, Integer.parseInt(args[1]));
 		bordSuperieur = Math.max(0, Integer.parseInt(args[2]));
-		l = Math.min(Integer.parseInt(args[3]), le - bordGauche);
-		h = Math.min(Integer.parseInt(args[4]), he - bordSuperieur);
+		
+		l = Math.min(Integer.parseInt(args[3]), le - bordGauche); // largeur valide
+
+		h = Math.min(Integer.parseInt(args[4]), he - bordSuperieur); // hauteur valide
+		centrex = l/2;
+		centrey = h/2;
+		
 		
 		this.setBounds(bordGauche, bordSuperieur, l, h);
-
+		this.graphics.translate(centrex, centrey);
+		
 		this.setVisible(true);
 	
 		//=============Active rendering=============//

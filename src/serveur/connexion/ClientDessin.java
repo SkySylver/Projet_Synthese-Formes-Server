@@ -46,7 +46,9 @@ public class ClientDessin extends Thread {
 			UIDessin client = new UIDessin(fluxEntrant.readLine().split(","));
 
 			while (true) {
-				formes.dessiner(fluxEntrant.readLine(), client.graphics);
+				String s =fluxEntrant.readLine();
+				System.out.println(s);
+				formes.dessiner(s, client.graphics);
 				// Traitement du flux avec chaine formes2
 			}
 

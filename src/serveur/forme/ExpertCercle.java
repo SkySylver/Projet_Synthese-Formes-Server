@@ -27,6 +27,7 @@ public class ExpertCercle extends ExpertCOR {
 				String couleur = args[1].trim();
 
 				try {
+					
 					Field champ = Color.class.getField(couleur);
 					Color color = (Color) champ.get(null);
 					graphics2D.setColor(color);
